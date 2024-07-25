@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Threading.Channels;
 using Module2Review;
 
 List<Student> students = new List<Student>(); //Created a list of students
@@ -27,6 +28,7 @@ students.Add(josh);
 students.Add(max);
 students.Add(em);
 
+//Add grades to each AddGrade Methods
 kelly.AddGrade(86.2);
 kelly.AddGrade(88, 91.1, 93);
 
@@ -39,6 +41,7 @@ max.AddGrade(92.3, 84, 90);
 em.AddGrade(89);
 em.AddGrade(93, 95.5, 94);
 
+//Loop through to show each student info.
 foreach (var student in students)
 {
     Console.WriteLine($"Student Name: {student.Name}\nStudent ID: {student.Id}\nAverage: {student.CalculateAverageGrade()}\n{student.Name}'s individual grades:");
@@ -46,4 +49,19 @@ foreach (var student in students)
     {
         Console.WriteLine(grade);
     }
+}
+//Create a course and set values to the properties
+var csharp = new Course(); 
+csharp.CourseName = "CSharp";
+csharp.CourseCode = "123CSharp";
+
+//Add two students to the course
+csharp.EnrollStudents("em");
+csharp.EnrollStudents("josh");
+
+//Display the course info and students enrolled in it.
+Console.WriteLine($"Course Name: {csharp.CourseName}\nCourse Code: {csharp.CourseCode}\nStudents enrolled:");
+foreach(var participant in csharp.EnrolledStudents)
+{
+    Console.WriteLine(participant);
 }
