@@ -11,10 +11,30 @@ public class Student //Created a Student class with properties, initialized the 
         Grades.Add(grade);
     }
 
-    public static void AddGrade(params double[] grades)
+    public static void AddGrade(params double[] grades) //Method to add a grades array
     {
         Grades.AddRange(grades);
     }
-    
+
+    public static double CalculateAverageGrade()
+    {
+        double sum = 0;
+        double averageGrade = 0;
+        if (Grades.Count != 0)
+        {
+            foreach (var grade in Grades)
+            {
+                sum += grade;
+            }
+
+            averageGrade = sum / Grades.Count;
+        }
+        else
+        { 
+            averageGrade += 0;
+        }
+        
+        return averageGrade;
+    }
     
 }
